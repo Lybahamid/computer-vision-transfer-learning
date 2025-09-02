@@ -31,17 +31,29 @@ conda activate lfw_env
 Install dependencies:
 pip install tensorflow numpy opencv-python fastapi uvicorn tf-keras-vis
 
+Scripts
+preprocess.py - Loads CIFAR-10 data, resizes images to 96x96, applies MobileNetV2 preprocessing, splits into train/val/test, and creates data generators.
 
-Place your trained model file (best_model.keras) in the models directory:
+train_model.py - Builds a transfer learning model using MobileNetV2, trains it on the preprocessed data, saves the best and final models, and plots training history.
+
+evaluate.py - Loads the trained model, evaluates it on the test set, prints metrics, saves a confusion matrix plot, and visualizes misclassified images.
+
+visualize_attention.py - Loads the trained model and test data, generates Grad-CAM visualizations for sample test images, and saves the results as a PNG.
+
+resize_img.py - Loads an image, resizes it to 96x96 pixels, and saves the resized image.
+
+app.py - FastAPI web server that provides a /predict endpoint for model inference and Grad-CAM visualization from uploaded images.
+
+Trained model file (best_model.keras) placed in the models directory:
 Path: D:/computer-vision-transfer-learning/models/best_model.keras
 
 
-Create a heatmaps directory for storing generated heatmap images:
+Heatmaps directory for storing generated heatmap images:
 Path: D:/computer-vision-transfer-learning/heatmaps
 
 
 
-Running the Application
+*Running the Application*
 
 Start the FastAPI server:
 python app.py
@@ -56,13 +68,35 @@ Download the generated heatmap:
 curl -X GET "http://localhost:8000/heatmap/heatmap_123e4567-e89b-12d3-a456-426614174000.png" -o heatmap.png
 
 
-
-
-
 API Endpoints
 
 POST /predict: Upload an image to get a prediction and heatmap filename.
 GET /heatmap/{filename}: Retrieve a saved heatmap image.
+
+*Results*
+Model Training
+The model was trained using transfer learning with MobileNetV2 as the base architecture on a subset of the CIFAR-10 dataset (5,000 training images, 1,000 test images, resized to 96x96). Training was monitored with early stopping and learning rate scheduling to prevent overfitting.
+
+Evaluation
+After training, the model achieved the following results on the test set:
+
+Test Accuracy:
+[Test Accuracy: 0.8289999961853027]
+
+Generalization:
+The model generalized well to unseen test data, with minimal overfitting observed between training and validation accuracy curves.
+
+Confusion Matrix:
+The confusion matrix shows strong performance across most classes, with some confusion between visually similar categories.
+
+Misclassified Images:
+Misclassifications were mostly limited to ambiguous or low-quality images.
+
+Visualizations
+Grad-CAM:
+Grad-CAM visualizations highlight the regions of the image most influential in the model’s predictions, confirming that the model focuses on relevant features.
+
+
 
 File Structure
 
