@@ -1,19 +1,18 @@
 ## Computer Vision Transfer Learning Project
 
-Overview:
+**Overview**
 This project implements a computer vision application using transfer learning with MobileNetV2. It includes a FastAPI backend that predicts image classes (e.g., airplane, automobile, etc.) and generates Grad-CAM heatmaps to visualize the areas of the image that influenced the prediction.
 
-Features:
+**Features**
 Classifies images into 10 categories using a pre-trained MobileNetV2 model.
 Generates Grad-CAM heatmaps to highlight important regions in the image.
 Exposes a REST API for predictions and heatmap retrieval.
 Saves heatmap images for later access.
 
-Prerequisites:
+**Prerequisites**
 Python 3.10
 Conda environment (recommended)
 Required libraries: tensorflow, numpy, opencv-python, fastapi, uvicorn, tf-keras-vis
-
 
 Setup Instructions:
 Clone the repository:git clone https://github.com/Lybahamid/computer-vision-transfer-learning.git
@@ -22,14 +21,12 @@ cd computer-vision-transfer-learning
 Create a Conda environment:conda create -n lfw_env python=3.10
 conda activate lfw_env
 
-
-
 Install dependencies:
 pip install tensorflow numpy opencv-python fastapi uvicorn tf-keras-vis
 
 
 
-Scripts
+**SCRIPTS**
 preprocess.py - Loads CIFAR-10 data, resizes images to 96x96, applies MobileNetV2 preprocessing, splits into train/val/test, and creates data generators.
 
 train_model.py - Builds a transfer learning model using MobileNetV2, trains it on the preprocessed data, saves the best and final models, and plots training history.
@@ -48,6 +45,7 @@ Path: D:/computer-vision-transfer-learning/models/best_model.keras
 
 Heatmaps directory for storing generated heatmap images:
 Path: D:/computer-vision-transfer-learning/heatmaps
+
 
 
 
@@ -71,7 +69,7 @@ API Endpoints
 POST /predict: Upload an image to get a prediction and heatmap filename.
 GET /heatmap/{filename}: Retrieve a saved heatmap image.
 
-**Results**
+**RESULTS**
 Model Training
 The model was trained using transfer learning with MobileNetV2 as the base architecture on a subset of the CIFAR-10 dataset (5,000 training images, 1,000 test images, resized to 96x96). Training was monitored with early stopping and learning rate scheduling to prevent overfitting.
 
@@ -79,7 +77,7 @@ Evaluation
 After training, the model achieved the following results on the test set:
 
 Test Accuracy:
-[Test Accuracy: 0.8289999961853027]
+**[Test Accuracy: 0.8289999961853027]**
 
 Generalization:
 The model generalized well to unseen test data, with minimal overfitting observed between training and validation accuracy curves.
