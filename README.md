@@ -82,26 +82,25 @@ POST /predict: Upload an image to get a prediction and heatmap filename.
 GET /heatmap/{filename}: Retrieve a saved heatmap image.
 
 **RESULTS**
-Model Training
+
+*Model Training*
 The model was trained using transfer learning with MobileNetV2 as the base architecture on a subset of the CIFAR-10 dataset (5,000 training images, 1,000 test images, resized to 96x96). Training was monitored with early stopping and learning rate scheduling to prevent overfitting.
 
-Evaluation
+*Evaluation*
 After training, the model achieved the following results on the test set:
 
-Test Accuracy:
 **[Test Accuracy: 0.8289999961853027]**
 
-Generalization:
+*Generalization:*
 The model generalized well to unseen test data, with minimal overfitting observed between training and validation accuracy curves.
 
-Confusion Matrix:
+*Confusion Matrix:*
 The confusion matrix shows strong performance across most classes, with some confusion between visually similar categories.
 
-Misclassified Images:
+*Misclassified Images:*
 Misclassifications were mostly limited to ambiguous or low-quality images.
 
-Visualizations
-Grad-CAM:
+*Visualizations*
 Grad-CAM visualizations highlight the regions of the image most influential in the model’s predictions, confirming that the model focuses on relevant features.
 
 
