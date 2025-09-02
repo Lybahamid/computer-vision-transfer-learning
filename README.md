@@ -1,35 +1,33 @@
 ## Computer Vision Transfer Learning Project
 
-Overview
-
+Overview:
 This project implements a computer vision application using transfer learning with MobileNetV2. It includes a FastAPI backend that predicts image classes (e.g., airplane, automobile, etc.) and generates Grad-CAM heatmaps to visualize the areas of the image that influenced the prediction.
 
-Features
-
+Features:
 Classifies images into 10 categories using a pre-trained MobileNetV2 model.
 Generates Grad-CAM heatmaps to highlight important regions in the image.
 Exposes a REST API for predictions and heatmap retrieval.
 Saves heatmap images for later access.
 
-Prerequisites
-
+Prerequisites:
 Python 3.10
 Conda environment (recommended)
 Required libraries: tensorflow, numpy, opencv-python, fastapi, uvicorn, tf-keras-vis
 
-Setup Instructions
 
+Setup Instructions:
 Clone the repository:git clone https://github.com/Lybahamid/computer-vision-transfer-learning.git
-
 cd computer-vision-transfer-learning
-
 
 Create a Conda environment:conda create -n lfw_env python=3.10
 conda activate lfw_env
 
 
+
 Install dependencies:
 pip install tensorflow numpy opencv-python fastapi uvicorn tf-keras-vis
+
+
 
 Scripts
 preprocess.py - Loads CIFAR-10 data, resizes images to 96x96, applies MobileNetV2 preprocessing, splits into train/val/test, and creates data generators.
@@ -53,7 +51,7 @@ Path: D:/computer-vision-transfer-learning/heatmaps
 
 
 
-*Running the Application*
+**Running the Application**
 
 Start the FastAPI server:
 python app.py
@@ -73,7 +71,7 @@ API Endpoints
 POST /predict: Upload an image to get a prediction and heatmap filename.
 GET /heatmap/{filename}: Retrieve a saved heatmap image.
 
-*Results*
+**Results**
 Model Training
 The model was trained using transfer learning with MobileNetV2 as the base architecture on a subset of the CIFAR-10 dataset (5,000 training images, 1,000 test images, resized to 96x96). Training was monitored with early stopping and learning rate scheduling to prevent overfitting.
 
