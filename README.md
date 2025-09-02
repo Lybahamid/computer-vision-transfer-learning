@@ -11,17 +11,22 @@ Saves heatmap images for later access.
 
 **Prerequisites**
 Python 3.10
+
 Conda environment (recommended)
+
 Required libraries: tensorflow, numpy, opencv-python, fastapi, uvicorn, tf-keras-vis
 
-Setup Instructions:
-Clone the repository:git clone https://github.com/Lybahamid/computer-vision-transfer-learning.git
+**Setup Instructions**
+Clone the repository:
+git clone https://github.com/Lybahamid/computer-vision-transfer-learning.git
 cd computer-vision-transfer-learning
 
-Create a Conda environment:conda create -n lfw_env python=3.10
+**Create a Conda environment**
+conda create -n lfw_env python=3.10
 conda activate lfw_env
 
-Install dependencies:
+
+**Install dependencies**
 pip install tensorflow numpy opencv-python fastapi uvicorn tf-keras-vis
 
 
@@ -58,6 +63,13 @@ python app.py
 Test the API with curl:
 Upload an image for prediction:
 curl -X POST "http://localhost:8000/predict" -F "file=@image1.jpg"
+
+EXPECTED OUTPUT:
+{
+  "predicted_class": "airplane",
+  "confidence": 0.9998857975006104,
+  "heatmap_file": "heatmap_123e4567-e89b-12d3-a456-426614174000.png"
+}
 
 
 Download the generated heatmap:
