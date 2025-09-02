@@ -1,0 +1,29 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Environment directories (virtual environments)
+env/
+venv/
+.lfw_env/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE files
+.idea/
+*.sublime-workspace
+*.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Exclude .keras files in models directory
+models/*.keras
+
+# Exclude specific data file
+data/preprocessed_data.npz
